@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title></title>
+    </head>
+    <body>
+        <pre>
+import numpy as np
+import pandas as pd
+df = pd.read_csv("./dataset_Facebook.csv", sep=';')
+df.head()
+
+df.shape
+
+df.describe()
+
+# Show specific type of data
+# Here it will only show data whose type is photo
+photo = df[df['Type']=='Photo']
+photo
+
+df1 = df[['Page total likes', 'Category', 'Post Month', 'Post Weekday']].loc[0:15]
+df1
+
+df2 = df[['Page total likes', 'Category', 'Post Month', 'Post Weekday']].loc[16:30]
+df2
+
+df3 = df[['Page total likes', 'Category', 'Post Month', 'Post Weekday']].loc[31:50]
+df3
+
+# Merging of Data
+merged = pd.concat([df1,df2,df3])
+merged
+
+# Sorting of Data
+sorted = df.sort_values('Page total likes' , ascending=True)
+sorted
+
+df.transpose()
+
+# Another method
+df.T
+
+# Shaping of Data
+pivot_table = pd.pivot_table(df, index=['Type', 'Category'] , values='comment')
+pivot_table
+
+reshapping_arr = np.array([1, 2, 3, 4, 5, 6])
+reshapping_arr.reshape(3,2)
+        </pre>
+    </body>
+</html>
